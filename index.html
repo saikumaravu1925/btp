@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Convertor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Web Convertor</h1>
+        <div class="flex">
+            <div class="text-center">
+                <div class="image_container">
+                    <!-- <img src="hero_img.png" alt="Image is Missing" /> -->
+                    <video controls class="video"></video>
+                </div>
+                <form action="/action_page.php">
+                    <input type="file" id="myFile" name="filename" class="btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="slider-container">
+        <input type="range" min="0" max="100" step="20" id="slider" />
+    </div>
+    <br />
+    <br />
+    <!-- <div class="slider-container">
+        <input type="range" min="0" max="100" step="20" id="slider" />
+    </div> -->
+    <div class="icontainer">
+        <div class="slides">
+            <img src="img2.png" alt="Image is Missing" />
+            <img src="img2.png" alt="Image is Missing" />
+            <img src="img3.png" alt="Image is Missing" />
+            <img src="img4.png" alt="Image is Missing" />
+            <img src="img5.png" alt="Image is Missing" />
+        </div>
+    </div>
+</body>
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    // output.innerHTML = slider.value;
+    //
+    // slider.oninput = function () {
+    //   output.innerHTML = this.value;
+    // };
+    //
+    $("#myFile").change(function () {
+        var fileInput = document.getElementById("myFile");
+        var fileUrl = window.URL.createObjectURL(fileInput.files[0]);
+        $(".video").attr("src", fileUrl);
+    });
+
+    $(document).ready(function () {
+        $('#slider').change(function () {
+            var slider = $(this).val();
+            $('.slides img:nth-child(1)').css("margin-left", -slider * 4 + '%');
+        });
+    });
+</script>
+
+</html>
